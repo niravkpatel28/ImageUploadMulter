@@ -1,0 +1,28 @@
+{
+  "name": "imageuploadmulter",
+  "version": "1.0.0",
+  "description": "Dynamically change destination folder in multer configuration. ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "multer"
+  ],
+  "author": "nirav patel",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niravkpatel28/ImageUploadMulter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/niravkpatel28/ImageUploadMulter/issues"
+  },
+  "homepage": "https://github.com/niravkpatel28/ImageUploadMulter#readme",
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "multer": "^1.4.2",
+    "path": "^0.12.7"
+  }
+}
