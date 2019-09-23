@@ -7,8 +7,6 @@ dotenv.config({path:'./config.env'});
 const imagePath = process.env.IMAGE_PATH
 
 exports.checkFolderName = (req,res,next)=>{
-    console.log(path.join(__dirname,'..',imagePath,req.params.folder));
-    
     if(req.params.folder){
         //check if the folder is present in image directory
         fs.exists(path.join(__dirname,'..',imagePath,req.params.folder),(exists)=>{
@@ -17,10 +15,13 @@ exports.checkFolderName = (req,res,next)=>{
                     if(err){
                         return globalError(req,res,err)
                     }
-                    console.log('Folder created');
+                    // console.log('Folder created');
                     
                 })
             }
+            //at this point folder is created 
+            // attach the destination folder to request or res.locals 
+            req.destination= path.join(__dirname,'..',imagePath,req.params.folder);
             next();
         })
         
@@ -29,3 +30,19 @@ exports.checkFolderName = (req,res,next)=>{
     }   
 }
 
+exports.uploadImage = (req,res,next)=>{
+    // console.log(req.destination);
+    // console.log(req.upload);
+    const upload =req.upload.single('photo');
+    upload(req,res,function(err){
+        if(err){
+            console.log('Unknown error occured while uploading image ');
+            return globalError(req,res,err);
+        }
+        // console.log('Image uploaded');
+        res.status(200).json({
+            status:"Image Uploaded Succecssfully",
+            file :req.file
+        })
+        })
+}
