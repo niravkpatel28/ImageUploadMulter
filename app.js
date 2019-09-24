@@ -1,9 +1,12 @@
 const express = require('express');
-const multer = require('multer');
+const path = require('path');
 const {globalError} = require('./utils/globalError');
 const imageRouter = require('./route/imageRoute');
+const {setImageDestination} = require('./utils/imageDestination');
 const dotenv = require('dotenv');
 dotenv.config({path:'./config.env'});
+
+setImageDestination(path.join(__dirname,process.env.IMAGE_PATH));
 const app = express();
 app.use('/upload',imageRouter);
 app.use('/',(req,res)=>{

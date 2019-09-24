@@ -1,2 +1,1 @@
-This file is just inserted so that git tracks images folder. 
-Folders for each user will be created in this folder.
+This file is created so that git can track images folder
